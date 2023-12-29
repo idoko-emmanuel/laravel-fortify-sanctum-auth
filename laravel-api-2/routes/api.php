@@ -60,6 +60,10 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         });
 
         Route::put('/profile-information', [ProfileInformationController::class, 'update']);
+
+        Route::post('/profile-photo', [ProfilePhotoController::class, 'update']);
+
+        Route::post('/remove-photo', [ProfilePhotoController::class, 'delete']);
     });
 
 });
