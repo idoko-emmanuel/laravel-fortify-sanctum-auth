@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse, ProfileInformationUpdatedResponse};
+use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse, ProfileInformationUpdatedResponse, PasswordUpdateResponse};
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -55,6 +55,15 @@ class FortifyServiceProvider extends ServiceProvider
                 return $request->wantsJson()
                     ? response()->json(['message' => 'Profile information updated successfully'], 200)
                     : back()->with('status', Fortify::PROFILE_INFORMATION_UPDATED);
+            }
+        });
+
+        $this->app->instance(PasswordUpdateResponse::class, new class implements PasswordUpdateResponse {
+            public function toResponse($request)
+            {
+                return $request->wantsJson()
+                    ? response()->json(['message' => 'password updated successfully'], 200)
+                    : back()->with('status', Fortify::PASSWORD_UPDATED);
             }
         });
     }

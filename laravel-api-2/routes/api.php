@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::post('/profile-photo', [ProfilePhotoController::class, 'update']);
 
         Route::post('/remove-photo', [ProfilePhotoController::class, 'delete']);
+
+        Route::put('/update-password', [PasswordController::class, 'update']);
     });
 
 });
