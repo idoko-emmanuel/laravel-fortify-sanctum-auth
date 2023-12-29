@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse};
+use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse, ProfileInformationUpdatedResponse};
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -48,6 +48,15 @@ class FortifyServiceProvider extends ServiceProvider
                     : redirect()->intended(Fortify::redirects('register'));
             }
         });
+
+        $this->app->instance(ProfileInformationUpdatedResponse::class, new class implements ProfileInformationUpdatedResponse {
+            public function toResponse($request)
+            {
+                return $request->wantsJson()
+                    ? response()->json(['message' => 'Profile information updated successfully'], 200)
+                    : back()->with('status', Fortify::PROFILE_INFORMATION_UPDATED);
+            }
+        });
     }
 
     /**
@@ -68,6 +77,6 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
-        });
+        }); 
     }
 }

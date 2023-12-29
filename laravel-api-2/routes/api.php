@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailVerificationNotificationController;
-use  Laravel\Fortify\Http\Controllers\{AuthenticatedSessionController, RegisteredUserController,PasswordResetLinkController};
+use Laravel\Fortify\Http\Controllers\{AuthenticatedSessionController, RegisteredUserController, PasswordResetLinkController, ProfileInformationController};
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::get('/', function (Request $request) {
             return $request->user();  
         });
+
+        Route::put('/profile-information', [ProfileInformationController::class, 'update']);
     });
 
 });
