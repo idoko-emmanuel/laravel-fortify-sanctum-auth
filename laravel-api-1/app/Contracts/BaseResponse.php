@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 use Illuminate\Contracts\Support\Responsable;
 
-interface HasEmailResponse extends Responsable
+interface BaseResponse extends Responsable
 {
     //
 }

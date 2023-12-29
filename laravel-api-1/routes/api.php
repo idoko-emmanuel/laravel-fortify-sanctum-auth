@@ -19,13 +19,13 @@ use  Laravel\Fortify\Http\Controllers\{AuthenticatedSessionController, Registere
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
 
+    // Retrieve the verification limiter configuration for verification attempts
+    $verificationLimiter = config('fortify.limiters.verification', '6,1');
+
     // Authentication routes 
     Route::prefix('auth')->withoutMiddleware('auth:sanctum')->group(function () {
         // Retrieve the limiter configuration for login attempts
         $limiter = config('fortify.limiters.login');
-
-        // Retrieve the verification limiter configuration for verification attempts
-        $verificationLimiter = config('fortify.limiters.verification', '6,1');
 
         // Route for user login
         Route::post('/login', [AuthenticatedSessionController::class, 'store'])
@@ -42,13 +42,19 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
             ->middleware('guest:'.config('fortify.guard'))  // Only guests (non-authenticated users) are allowed
             ->name('password.email');  // Name for the route
+    });
 
-        // Route to resend email verification notification
-        Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-            ->middleware([
-                'auth:sanctum', // Only authenticated users are allowed
-                'throttle:'.$verificationLimiter // Throttle resend email attempts 
-            ]);
+    // Route to resend email verification notification
+    Route::post('auth/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    ->middleware([
+        'auth:sanctum', // Only authenticated users are allowed
+        'throttle:'.$verificationLimiter // Throttle resend email attempts 
+    ]);
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', function (Request $request) {
+            return $request->user();  
+        });
     });
 
 });
