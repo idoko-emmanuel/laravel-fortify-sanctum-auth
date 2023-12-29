@@ -3,8 +3,6 @@ In today’s world, applications often need to cater to both web and API users. 
 
 The project is in three phases. The first and second phases will demonstrate how to authenticate new users using API authentication. While same will be achieved in the thrid phase using web authentication. Join us as we explore the potential of these powerful Laravel packages.
 
-## How to Contribute
-
 ## Support and Feedback
 
 If you find this project helpful or have suggestions, I'd love to hear from you! Feel free to [open an issue](https://github.com/idoko-emmanuel/laravel-fortify-sanctum-auth/issues) or reach out to me on [Twitter](https://twitter.com/baqend_) [@baqend_].
