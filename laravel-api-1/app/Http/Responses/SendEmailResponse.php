@@ -3,9 +3,9 @@
 namespace App\Http\Responses;
 
 use Laravel\Fortify\Fortify;
-use App\Contracts\SendEmailResponse as EmailContract;
+use App\Contracts\BaseResponse;
 
-class SendEmailResponse implements EmailContract
+class SendEmailResponse implements BaseResponse
 {
     /**
      * Create an HTTP response that represents the object.
