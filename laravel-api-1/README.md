@@ -13,3 +13,17 @@ For a more detailed understanding of the concepts covered in this project, check
 To ensure the proper implementation of custom responses, we have provided a Postman collection for testing the API endpoints. The collection includes pre-configured requests to test registration, login, email verification, and other authentication-related functionalities. Follow the steps outlined in our testing guide to validate the behavior of your authentication system.
 
 [Link to Postman Collection and Testing Guide](https://documenter.getpostman.com/view/10840637/2s9YsDjEvF)
+
+## Support and Feedback
+
+If you find this project helpful or have suggestions, I'd love to hear from you! Feel free to [open an issue](https://github.com/idoko-emmanuel/laravel-fortify-sanctum-auth/issues) or reach out to me on [Twitter](https://twitter.com/baqend_) [@baqend_].
+
+**Don't forget to star the project if you find it useful! ⭐️**
+
+## Follow Me
+
+If you're interested in my work and want to stay updated with my latest projects, consider following me on GitHub:
+
+[![Follow me on GitHub](https://github.com/idoko-emmanuel)]
+
+Your support is greatly appreciated! 🙌
