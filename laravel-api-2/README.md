@@ -6,13 +6,13 @@ The customization of authentication responses in Laravel provides a lot of flexi
 
 For a more detailed understanding of the concepts covered in this project, check out our comprehensive documentation guide on Medium. The guide walks you through the customization of authentication responses in Laravel, providing insights and explanations to help you grasp the core concepts.
 
-[Link to Medium Documentation Guide](https://medium.com/@idokoemmanuel3/user-authentication-for-web-and-api-with-laravel-fortify-and-sanctum-fb31455ee673)
+[Link to Medium Documentation Guide](https://medium.com/@idokoemmanuel3/user-authentication-for-web-and-api-with-laravel-fortify-and-sanctum-2-3486ba39c92b)
 
 ## Testing API with Postman
 
 To ensure the proper implementation of custom responses, we have provided a Postman collection for testing the API endpoints. The collection includes pre-configured requests to test registration, login, email verification, and other authentication-related functionalities. Follow the steps outlined in our testing guide to validate the behavior of your authentication system.
 
-[Link to Postman Collection and Testing Guide](https://documenter.getpostman.com/view/10840637/2s9YsDjEvF)
+[Link to Postman Collection and Testing Guide](https://documenter.getpostman.com/view/10840637/2s9YsDjZsD)
 
 ## Support and Feedback
 
