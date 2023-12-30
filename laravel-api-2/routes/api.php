@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmailVerificationNotificationController;
-use Laravel\Fortify\Http\Controllers\{AuthenticatedSessionController, RegisteredUserController, PasswordResetLinkController, ProfileInformationController};
+use App\Http\Controllers\{EmailVerificationNotificationController, ProfilePhotoController, LogoutController};
+use Laravel\Fortify\Http\Controllers\{AuthenticatedSessionController, RegisteredUserController, PasswordResetLinkController, ProfileInformationController, PasswordController};
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         ->middleware([
             'throttle:'.$verificationLimiter // Throttle resend email attempts 
         ]);
+
+        Route::post('/logout', [LogoutController::class, 'destroy']);
     });
 
     // User routes

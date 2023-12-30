@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse, ProfileInformationUpdatedResponse, PasswordUpdateResponse};
+use Laravel\Fortify\Contracts\{LoginResponse, RegisterResponse, ProfileInformationUpdatedResponse, PasswordUpdateResponse, LogoutResponse};
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -22,6 +22,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        //customized login response
         $this->app->instance(LoginResponse::class, new class implements LoginResponse {
             public function toResponse($request)
             {
@@ -36,6 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
      
+         //customized register response
         $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
             public function toResponse($request)
             {
@@ -49,6 +51,17 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+         //customized logout response
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                return $request->wantsJson()
+                    ? response()->json(['message' => 'Succesfully logged out'], 200)
+                    : redirect(Fortify::redirects('logout', '/'));
+            }
+        });
+
+         //customized profile update response
         $this->app->instance(ProfileInformationUpdatedResponse::class, new class implements ProfileInformationUpdatedResponse {
             public function toResponse($request)
             {
@@ -58,6 +71,7 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+         //customized password update response
         $this->app->instance(PasswordUpdateResponse::class, new class implements PasswordUpdateResponse {
             public function toResponse($request)
             {

@@ -2,10 +2,10 @@
 
 namespace App\Actions\Profile;
 
-use App\Contracts\DeleteUserPhoto;
+use App\Contracts\BaseResponse;
 use App\Models\User;
 
-class DeleteProfilePhoto implements DeleteUserPhoto
+class DeleteProfilePhoto implements BaseResponse
 {
     /**
      * delete the given user's photo.
@@ -15,6 +15,5 @@ class DeleteProfilePhoto implements DeleteUserPhoto
     public function delete(User $user): void
     {
         $user->deleteProfilePhoto();
-    
     }
 }
