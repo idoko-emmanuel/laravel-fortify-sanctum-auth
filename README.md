@@ -16,3 +16,5 @@ If you're interested in my work and want to stay updated with my latest projects
 [![Follow me on GitHub](https://github.com/idoko-emmanuel)]
 
 Your support is greatly appreciated! 🙌
+
+Sponsor ❤️ this and future projects ❤️: USDT TRC20 TJVpytKzkjH2DFt7WFtVQ99FQ5sG5cRLAE ❤️❤️
